@@ -1,0 +1,20 @@
+[
+	  {  
+		"userEmail" : "anshika@gmail.com",
+	    "userPassword" : "Iamking@000",
+	    "productName" : "ZARA COAT 3" 
+
+	  },
+	  {  
+		"userEmail" : "manish.singh@irdeto.com",
+	    "userPassword" : "Manish@123",
+	    "productName" : "ADIDAS ORIGINAL"
+
+	  },
+	  {  
+		"userEmail" : "shetty@gmail.com",
+	    "userPassword" : "Iamking@000",
+	    "productName" : "ADIDAS ORIGINAL"
+	  }
+	
+]
