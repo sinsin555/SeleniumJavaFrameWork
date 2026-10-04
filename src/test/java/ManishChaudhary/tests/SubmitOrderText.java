@@ -59,7 +59,7 @@ public class SubmitOrderText extends BaseTest{
 	@DataProvider
 	public Object[][] getData() throws IOException
 	{   
-		//\src\test\java\ManishChaudhary\Data\PurchaseOrder.json
+		//\src\test\java\ManishChaudhary\Data\PurchaseOrder.json//
 		
 		List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir")+"/src/test/java/ManishChaudhary/Data/PurchaseOrder.json");
 
