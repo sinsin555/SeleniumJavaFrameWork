@@ -45,12 +45,12 @@ public class SubmitOrderText extends BaseTest{
 		}
 	
 	@Test(dependsOnMethods = {"submitOrder"}, dataProvider="getData")
-	public void OrderHistoryTest(String userEmail, String userPassword, String productName) throws InterruptedException, IOException
+	public void OrderHistoryTest(HashMap<String,String> input) throws InterruptedException, IOException
 	{
 		landingpage.goTo(url);
-		ProductCatalogue productCatalogue= landingpage.loginApplication(userEmail,userPassword);
+		ProductCatalogue productCatalogue= landingpage.loginApplication(input.get("userEmail"),input.get("userPassword"));
 		OrderPage orderPage = productCatalogue.goToOrderPage();
-		Assert.assertTrue(orderPage.getOrderDisplay(productName));
+		Assert.assertTrue(orderPage.getOrderDisplay(input.get("productName")));
 		
 		}
 	
