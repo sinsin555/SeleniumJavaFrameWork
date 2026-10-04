@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -50,6 +51,16 @@ public class BaseTest {
 		  }
 		  else if(browserName.contains("chrome"))
 		  {   ChromeOptions options =new ChromeOptions();
+			  options.addArguments("--disable-notifications");
+			  options.addArguments("--disable-popup-blocking");
+	
+			  Map<String, Object> prefs = new HashMap<>();
+	
+			  prefs.put("credentials_enable_service", false);
+			  prefs.put("profile.password_manager_leak_detection", false);
+			  prefs.put("profile.default_content_setting_values.notifications", 2);
+	
+			  options.setExperimentalOption("prefs", prefs);
 			  WebDriverManager.chromedriver().setup();
 			  if (browserName.contains("headless"))
 			  {
