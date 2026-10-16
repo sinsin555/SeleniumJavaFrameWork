@@ -31,6 +31,7 @@ WebDriver driver;
 	
 	By productsBy = By.cssSelector(".mb-3");
 	By addToCart = By.cssSelector(".card-body button:last-of-type");
+	By viewProduct = By.cssSelector(".card-body w-40");
 	By toastMessage = By.cssSelector("#toast-container");
 	
 	public List<WebElement> getProductList()
@@ -51,6 +52,16 @@ WebDriver driver;
 		waitForElementToDisappear(spinner_overlay);
 		prod.findElement(addToCart).click();
 		waitForElementToAppear(toastMessage);
+		waitForElementToDisappear(spinner);
+		
+	}
+	
+	public void clickToViewProduct(String productName) throws InterruptedException 
+	{
+		WebElement prod= getProductByName(productName);
+		waitForElementToDisappear(spinner_overlay);
+		prod.findElement(viewProduct).click();
+		//waitForElementToAppear(toastMessage);
 		waitForElementToDisappear(spinner);
 		
 	}

@@ -54,6 +54,22 @@ public class SubmitOrderText extends BaseTest{
 		
 		}
 	
+	@Test(dataProvider="getData", groups="purchase")
+	public void placeOrderTest(HashMap<String,String> input) throws InterruptedException, IOException
+	{   
+		landingpage.goTo(url);
+		ProductCatalogue productCatalogue= landingpage.loginApplication(input.get("userEmail"),input.get("userPassword"));
+		productCatalogue.clickToViewProduct(input.get("productName"));
+		CartPage cartpage = productCatalogue.goToCartPage();
+		Boolean match= cartpage.getProductDisplay(input.get("productName"));
+		Assert.assertTrue(match);
+		CheckoutPage checkoutPage = cartpage.goToCheckout();
+		checkoutPage.selectCountry(country);
+		ConfirmationPage confirmationPage = checkoutPage.submitOrder();
+		String confirmationmessage = confirmationPage.getConfirmationMessage();
+		System.out.println(confirmationmessage);
+		Assert.assertTrue(confirmationmessage.equalsIgnoreCase("Thankyou for the order."));
+		}
 	
 	
 	@DataProvider
@@ -65,6 +81,7 @@ public class SubmitOrderText extends BaseTest{
 
 		return new Object[][] {{data.get(0)},{data.get(1)}};
 	}
+	
 	
 	
 	
@@ -80,7 +97,7 @@ public class SubmitOrderText extends BaseTest{
 	//@DataProvider
 	//public Object[][] getData()
 	//{
-	//  return new Object[][] {{"anshika@gmail.com","Iamking@000","ZARA COAT 3"},{"manish.singh@irdeto.com","Manish@123","ADIDAS ORIGINAL"}};
+	//  return new Object[][] {{"anshika@gmail.com","Iamking@000","ZARA COAT 3"},{"manish.singh@irdeto.com","Manish@123","ADIDAS ORIGINAL"},{"anshika@gmail.com","Iamking@000","IPHONE 13 PRO"}};
 	//}
  
 }
