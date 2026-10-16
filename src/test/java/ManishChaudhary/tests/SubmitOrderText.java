@@ -28,7 +28,7 @@ public class SubmitOrderText extends BaseTest{
 	//String userPassword="Manish@123";
 	String url="https://rahulshettyacademy.com/client";
 	String country="india";
-	@Test(dataProvider="getData", groups="purchase")
+	@Test(dataProvider="getData")
 	public void submitOrder(HashMap<String,String> input) throws InterruptedException, IOException
 	{   
 		landingpage.goTo(url);
