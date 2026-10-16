@@ -51,19 +51,20 @@ public class AbstractComponent {
 		cancelButton.click();
 	}
 	public CartPage goToCartPage()
-	{	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-    // Wait until loading spinner disappears
-    wait.until(ExpectedConditions.invisibilityOfElementLocated(
-            By.cssSelector(".ngx-spinner-overlay")
-    ));
-
-    // Wait until Cart button is clickable
-    wait.until(ExpectedConditions.elementToBeClickable(cartHeader));
-		cartHeader.click();
-		CartPage cartPage = new CartPage(driver);
-		return cartPage;
+	{		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		
+		    // Wait until loading spinner disappears
+		    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+		            By.cssSelector(".ngx-spinner-overlay")
+		    ));
+		
+		    // Wait until Cart button is clickable
+		    wait.until(ExpectedConditions.elementToBeClickable(cartHeader));
+				cartHeader.click();
+				CartPage cartPage = new CartPage(driver);
+				return cartPage;
 	}
+	
 	public OrderPage goToOrderPage()
 	{
 		orderHeader.click();

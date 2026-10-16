@@ -56,13 +56,14 @@ WebDriver driver;
 		
 	}
 	
-	public void clickToViewProduct(String productName) throws InterruptedException 
+	public ProductDetailsPage clickToViewProduct(String productName) throws InterruptedException 
 	{
 		WebElement prod= getProductByName(productName);
 		waitForElementToDisappear(spinner_overlay);
 		prod.findElement(viewProduct).click();
 		//waitForElementToAppear(toastMessage);
 		waitForElementToDisappear(spinner);
+		return new ProductDetailsPage(driver);
 		
 	}
 

@@ -19,6 +19,7 @@ import ManishChaudhary.pageobjects.CheckoutPage;
 import ManishChaudhary.pageobjects.ConfirmationPage;
 import ManishChaudhary.pageobjects.OrderPage;
 import ManishChaudhary.pageobjects.ProductCatalogue;
+import ManishChaudhary.pageobjects.ProductDetailsPage;
 
 
 public class SubmitOrderText extends BaseTest{
@@ -59,8 +60,9 @@ public class SubmitOrderText extends BaseTest{
 	{   
 		landingpage.goTo(url);
 		ProductCatalogue productCatalogue= landingpage.loginApplication(input.get("userEmail"),input.get("userPassword"));
-		productCatalogue.clickToViewProduct(input.get("productName"));
-		CartPage cartpage = productCatalogue.goToCartPage();
+		ProductDetailsPage productDetails = productCatalogue.clickToViewProduct(input.get("productName"));
+		productDetails.addProductToCart(input.get("productName"));
+		CartPage cartpage = productDetails.goToCartPage();
 		Boolean match= cartpage.getProductDisplay(input.get("productName"));
 		Assert.assertTrue(match);
 		CheckoutPage checkoutPage = cartpage.goToCheckout();
