@@ -31,7 +31,7 @@ WebDriver driver;
 	
 	By productsBy = By.cssSelector(".mb-3");
 	By addToCart = By.cssSelector(".card-body button:last-of-type");
-	By viewProduct = By.xpath("//div/div/button[contains(text(),' View')]");
+	By viewProduct = By.cssSelector("button.w-40");
 	By toastMessage = By.cssSelector("#toast-container");
 	
 	public List<WebElement> getProductList()
