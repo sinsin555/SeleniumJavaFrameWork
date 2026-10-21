@@ -46,11 +46,13 @@ public class BaseTest {
 		  {
 			  WebDriverManager.edgedriver().setup();  
 	          driver =new EdgeDriver();
+	          DriverManager.setDriver(driver);
 			  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			  driver.manage().window().maximize();
 		  }
 		  else if(browserName.contains("chrome"))
 		  {   ChromeOptions options =new ChromeOptions();
+		  	  DriverManager.setDriver(driver);
 			  options.addArguments("--disable-notifications");
 			  options.addArguments("--disable-popup-blocking");
 	
@@ -75,12 +77,14 @@ public class BaseTest {
 		  {        
 				WebDriverManager.firefoxdriver().setup();  
 			    driver=new FirefoxDriver();
+			    DriverManager.setDriver(driver);
 			    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				driver.manage().window().maximize();
 		  }
 		  else if(browserName.equalsIgnoreCase("safari"))
 		  {       
 			    driver = new SafariDriver();
+			    DriverManager.setDriver(driver);
 			    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				driver.manage().window().maximize();
 		  }
@@ -98,11 +102,16 @@ public class BaseTest {
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown()
-	{    if(driver != null)
-		    {
-				driver.quit();
-		    }
-		
+		{    WebDriver driver = DriverManager.getDriver();
+	
+	    try {
+	        if (driver != null) {
+	            driver.quit();
+	        }
+	    } finally {
+	        DriverManager.unload();
+	    }
+			
 	}
 	
 	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException
