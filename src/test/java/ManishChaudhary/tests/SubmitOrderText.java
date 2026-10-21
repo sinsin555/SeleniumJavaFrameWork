@@ -45,7 +45,7 @@ public class SubmitOrderText extends BaseTest{
 		Assert.assertTrue(confirmationmessage.equalsIgnoreCase("Thankyou for the order."));
 		}
 	
-	@Test(dependsOnMethods = {"submitOrder"}, dataProvider="getData")
+	@Test(dependsOnMethods = {"submitOrder"}, dataProvider="getData", groups="purchase")
 	public void OrderHistoryTest(HashMap<String,String> input) throws InterruptedException, IOException
 	{
 		landingpage.goTo(url);
