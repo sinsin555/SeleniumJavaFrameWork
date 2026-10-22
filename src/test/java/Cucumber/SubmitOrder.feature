@@ -4,7 +4,7 @@ Feature: Purchse the order from Ecomerce website
   I want to use this template for my feature file
 
 Background:
-Given I landed on <url> Ecomerce Page 
+Given I landed on "https://rahulshettyacademy.com/client " Ecomerce Page 
 
 
   @Regression 
