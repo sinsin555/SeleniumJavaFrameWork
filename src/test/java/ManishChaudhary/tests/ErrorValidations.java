@@ -20,9 +20,9 @@ public class ErrorValidations extends BaseTest{
 		String userEmail="manish.singh@irdeto.com";
 		String userPassword="Manish@12";
 		String url="https://rahulshettyacademy.com/client";
-		landingpage.goTo(url);
-		landingpage.loginApplication(userEmail, userPassword);
-		Assert.assertEquals("Incorrect email or password.", landingpage.getErrorMessage()); 
+		landingPage.goTo(url);
+		landingPage.loginApplication(userEmail, userPassword);
+		Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage()); 
 	}
 	
 	@Test
@@ -33,8 +33,8 @@ public class ErrorValidations extends BaseTest{
 		String userPassword="Manish@123";
 		String url="https://rahulshettyacademy.com/client";
 		//String country="india";
-		landingpage.goTo(url);
-		ProductCatalogue productCatalogue= landingpage.loginApplication(userEmail,userPassword);
+		landingPage.goTo(url);
+		ProductCatalogue productCatalogue= landingPage.loginApplication(userEmail,userPassword);
 		productCatalogue.addProductToCart(productName);
 		CartPage cartpage = productCatalogue.goToCartPage();
 		Boolean match= cartpage.getProductDisplay(productName);

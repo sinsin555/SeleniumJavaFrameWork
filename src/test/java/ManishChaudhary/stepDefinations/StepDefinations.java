@@ -22,18 +22,19 @@ public class StepDefinations extends BaseTest{
 	public ConfirmationPage confirmationPage;
 	public ProductDetailsPage productDetails;
 	
-	@Given("^I landed on (.+) Ecomerce Page$")
+	@Given("I landed on {string} Ecomerce Page")
 	public void I_landed_on_Ecomerce_Page(String url) throws IOException
 	{   
 		landingPage = launchApplication();
-		landingpage.goTo(url);
+		System.out.println("logger> URL from feature file : "+url);
+		landingPage.goTo(url);
 	}
 	
 	
 	@Given("^Logged in with usename  (.+) and password (.+)$")
 	public void Logged_in_with_usename_and_password(String userName, String password)
 	{
-		productCatalogue= landingpage.loginApplication(userName,password);
+		productCatalogue= landingPage.loginApplication(userName,password);
 		
 	}
 	
@@ -76,7 +77,7 @@ public class StepDefinations extends BaseTest{
 	@Then("{string} message is displayed")
 	public void incorrect_login_message_is_displayed(String message)
 	{
-		Assert.assertEquals(message, landingpage.getErrorMessage()); 
+		Assert.assertEquals(message, landingPage.getErrorMessage()); 
 		tearDown();
 	}
 }

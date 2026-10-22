@@ -31,8 +31,8 @@ public class SubmitOrderText extends BaseTest{
 	@Test(dataProvider="getData")
 	public void submitOrder(HashMap<String,String> input) throws InterruptedException, IOException
 	{   
-		landingpage.goTo(url);
-		ProductCatalogue productCatalogue= landingpage.loginApplication(input.get("userEmail"),input.get("userPassword"));
+		landingPage.goTo(url);
+		ProductCatalogue productCatalogue= landingPage.loginApplication(input.get("userEmail"),input.get("userPassword"));
 		productCatalogue.addProductToCart(input.get("productName"));
 		CartPage cartpage = productCatalogue.goToCartPage();
 		Boolean match= cartpage.getProductDisplay(input.get("productName"));
@@ -48,8 +48,8 @@ public class SubmitOrderText extends BaseTest{
 	@Test(dependsOnMethods = {"submitOrder"}, dataProvider="getData", groups="purchase")
 	public void OrderHistoryTest(HashMap<String,String> input) throws InterruptedException, IOException
 	{
-		landingpage.goTo(url);
-		ProductCatalogue productCatalogue= landingpage.loginApplication(input.get("userEmail"),input.get("userPassword"));
+		landingPage.goTo(url);
+		ProductCatalogue productCatalogue= landingPage.loginApplication(input.get("userEmail"),input.get("userPassword"));
 		OrderPage orderPage = productCatalogue.goToOrderPage();
 		Assert.assertTrue(orderPage.getOrderDisplay(input.get("productName")));
 		
@@ -58,8 +58,8 @@ public class SubmitOrderText extends BaseTest{
 	@Test(dataProvider="getData", groups="purchase")
 	public void placeOrderTest(HashMap<String,String> input) throws InterruptedException, IOException
 	{   
-		landingpage.goTo(url);
-		ProductCatalogue productCatalogue= landingpage.loginApplication(input.get("userEmail"),input.get("userPassword"));
+		landingPage.goTo(url);
+		ProductCatalogue productCatalogue= landingPage.loginApplication(input.get("userEmail"),input.get("userPassword"));
 		ProductDetailsPage productDetails = productCatalogue.clickToViewProduct(input.get("productName"));
 		productDetails.addProductToCart(input.get("productName"));
 		CartPage cartpage = productDetails.goToCartPage();
