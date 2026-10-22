@@ -30,7 +30,7 @@ import tools.jackson.databind.ObjectMapper;
 
 public class BaseTest {
 	public WebDriver driver;
-	
+	public LandingPage landingPage;
 	
 	public WebDriver initializeDriver() throws IOException
 	{
@@ -96,7 +96,8 @@ public class BaseTest {
 	public LandingPage launchApplication() throws IOException
 	{
 		driver = initializeDriver();
-		return new LandingPage(driver);
+		landingPage=new LandingPage(driver);
+		return landingPage; 
 	}
 	
 	@AfterMethod(alwaysRun = true)
