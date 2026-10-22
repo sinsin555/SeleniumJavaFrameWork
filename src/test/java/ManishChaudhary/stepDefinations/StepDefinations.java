@@ -10,6 +10,7 @@ import ManishChaudhary.pageobjects.CheckoutPage;
 import ManishChaudhary.pageobjects.ConfirmationPage;
 import ManishChaudhary.pageobjects.LandingPage;
 import ManishChaudhary.pageobjects.ProductCatalogue;
+import ManishChaudhary.pageobjects.ProductDetailsPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,8 +20,9 @@ public class StepDefinations extends BaseTest{
 	public LandingPage landingPage;
 	public ProductCatalogue productCatalogue;
 	public ConfirmationPage confirmationPage;
+	public ProductDetailsPage productDetails;
 	
-	@Given("I landed on {string} Ecomerce Page")
+	@Given("^I landed on (.+) Ecomerce Page")
 	public void I_landed_on_Ecomerce_Page(String url) throws IOException
 	{   
 		landingPage = launchApplication();
@@ -52,6 +54,15 @@ public class StepDefinations extends BaseTest{
 		confirmationPage = checkoutPage.submitOrder();
 	}
 	
+	@When("^I open product (.+) to view and add it to cart")
+	public void viewAndPlaceOrderTest(String productName) throws InterruptedException
+	{
+		ProductDetailsPage productDetails = productCatalogue.clickToViewProduct(productName);
+		productDetails.addProductToCart(productName);
+		CartPage cartpage = productDetails.goToCartPage();
+		Boolean match= cartpage.getProductDisplay(productName);
+		Assert.assertTrue(match);
+	}
 	
 	@Then("{string} message is displayed on ConfirmationPage")
 	public void message_is_displayed_on_ConfirmationPage(String message)

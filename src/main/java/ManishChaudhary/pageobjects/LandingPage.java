@@ -44,7 +44,7 @@ public class LandingPage extends AbstractComponent {
 	}
 	
 	public void goTo(String url)
-	{
+	{  
 		driver.get(url);
 	}
 	public String getErrorMessage()
