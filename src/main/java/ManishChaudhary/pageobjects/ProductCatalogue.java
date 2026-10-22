@@ -29,6 +29,9 @@ WebDriver driver;
 	@FindBy(css=".ngx-spinner-overlay")
 	WebElement spinner_overlay;
 	
+	@FindBy(xpath="//button[contains(normalize-space(), 'HOME')]")
+	WebElement homeButton;
+	
 	By productsBy = By.cssSelector(".mb-3");
 	By addToCart = By.cssSelector(".card-body button:last-of-type");
 	By viewProduct = By.cssSelector("button.w-40");
@@ -47,7 +50,7 @@ WebDriver driver;
 	}
 	
 	public void addProductToCart(String productName) throws InterruptedException 
-	{
+	{   waitForWebElementToAppear(homeButton);
 		WebElement prod= getProductByName(productName);
 		waitForElementToDisappear(spinner_overlay);
 		prod.findElement(addToCart).click();
