@@ -22,7 +22,7 @@ public class StepDefinations extends BaseTest{
 	public ConfirmationPage confirmationPage;
 	public ProductDetailsPage productDetails;
 	
-	@Given("^I landed on (.+) Ecomerce Page")
+	@Given("^I landed on (.+) Ecomerce Page$")
 	public void I_landed_on_Ecomerce_Page(String url) throws IOException
 	{   
 		landingPage = launchApplication();
@@ -54,7 +54,7 @@ public class StepDefinations extends BaseTest{
 		confirmationPage = checkoutPage.submitOrder();
 	}
 	
-	@When("^I open product (.+) to view and add it to cart")
+	@When("^I open product (.+) to view and add it to cart$")
 	public void viewAndPlaceOrderTest(String productName) throws InterruptedException
 	{
 		ProductDetailsPage productDetails = productCatalogue.clickToViewProduct(productName);

@@ -15,5 +15,5 @@ Given I landed on <url> Ecomerce Page
     Then "THANKYOU FOR THE ORDER." message is displayed on ConfirmationPage 
     
     Examples: 
-      | name                    | password       | productName | url |
-      | manish.singh@irdeto.com |     Manish@123 | ZARA COAT 3 | https://rahulshettyacademy.com/client |
+      | name                    | password       | productName | url 							    	|
+      | manish.singh@irdeto.com |     Manish@123 | ZARA COAT 3 | https://rahulshettyacademy.com/client  | 
